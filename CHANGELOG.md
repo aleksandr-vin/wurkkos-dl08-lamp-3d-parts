@@ -9,5 +9,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Transport and protective caps.
+- Transport, protective and diffuser caps.
 - Pistol grip.

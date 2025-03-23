@@ -13,29 +13,57 @@ placement_distance = 10; // Distance between parts
 
 module transport_cap()
 {
-    cap_base_h = height + thickness;
-    translate([ 0, 0, cap_base_h / 2 ]) union()
-    {
-        difference()
-        {
-            cylinder(h = cap_base_h, d = outer_dia + 2 * thickness, center = true);
-            translate([ 0, 0, thickness ]) cylinder(h = height++ thickness, d = outer_dia, center = true);
-        }
-        translate([ 0, 0, (cap_base_h + thickness) / 2 ]) difference()
-        {
-            cylinder(h = thickness, d1 = outer_dia + 2 * thickness, d2 = outer_dia + thickness, center = true);
-            translate([ 0, 0, thickness / 2 - 0.01 ])
-                cylinder(h = thickness * 2, d1 = outer_dia, d2 = outer_dia - 2 * thickness, center = true);
-        }
-    }
+	cap_base_h = height + thickness;
+	translate([ 0, 0, cap_base_h / 2 ])
+	union()
+	{
+		difference()
+		{
+			cylinder(h = cap_base_h, d = outer_dia + 2 * thickness, center = true);
+			translate([ 0, 0, thickness ])
+			cylinder(h = height + thickness, d = outer_dia, center = true);
+		}
+		translate([ 0, 0, (cap_base_h + thickness) / 2 ])
+		difference()
+		{
+			cylinder(h = thickness, d1 = outer_dia + 2 * thickness, d2 = outer_dia + thickness, center = true);
+			translate([ 0, 0, thickness / 2 - 0.01 ])
+			cylinder(h = thickness * 2, d1 = outer_dia, d2 = outer_dia - 2 * thickness, center = true);
+		}
+	}
 }
 
 module cap()
 {
-    difference()
-    {
-        transport_cap();
-        cylinder(h = thickness * 3, d = inner_dia + 2 * inner_cut_thickness, center = true);
-        // # cylinder(h=thickness*3, d=inner_dia, center=true); // Uncomment to see where glass is
-    }
+	difference()
+	{
+		transport_cap();
+		cylinder(h = thickness * 3, d = inner_dia + 2 * inner_cut_thickness, center = true);
+		// # cylinder(h=thickness*3, d=inner_dia, center=true); // Uncomment to see where glass is
+	}
+}
+
+module diffuser_cap()
+{
+	difference()
+	{
+		union()
+		{
+			difference()
+			{
+				transport_cap();
+				cylinder(h = thickness * 3, d = outer_dia, center = true);
+				// # cylinder(h=thickness*3, d=inner_dia, center=true); // Uncomment to see where glass is
+			}
+			difference()
+			{
+				sphere(d = outer_dia + 2 * thickness);
+				sphere(d = outer_dia);
+				translate([ 0, 0, 50 ])
+				cube([ 100, 100, 100 ], center = true);
+			}
+		}
+		translate([ 0, 0, 50 + 1 ])
+		cube([ 1, 100, 100 ], center = true);
+	}
 }

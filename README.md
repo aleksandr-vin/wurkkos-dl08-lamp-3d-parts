@@ -2,19 +2,27 @@
 
 ## Caps
 
-Print in TPU.
-
 ### Protective cap
+
+Print in TPU.
 
 ![Protective cap](dl08-protective-cap.png)
 
 ### Transport cap
 
+Print in TPU.
+
 ![Transport cap](dl08-transport-cap.png)
+
+### Diffuser cap
+
+Print in PLA, preferable glow in the dark.
+
+![Diffuser cap](dl08-diffuser-cap.png)
 
 ## Pistol grips
 
-Print in PLA.
+Print in PLA, preferable glow in the dark.
 
 Use 2x:
 
